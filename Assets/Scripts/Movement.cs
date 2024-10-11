@@ -60,17 +60,14 @@ public class Ball : MonoBehaviour
     bool IsBounded(GameObject Paddle)
     {
         Vector3 Average = (transform.position+Paddle.GetComponent<Transform>().transform.position)/2;
-  
-           Vector3 BallAverage = new Vector3(Mathf.Clamp(Average.x,transform.position.x-transform.localScale.x/2,transform.position.x+transform.localScale.x/2),
-        Mathf.Clamp(Average.y,transform.position.y-transform.localScale.y/2,transform.position.y+transform.localScale.y/2),
-        Mathf.Clamp(Average.z,transform.position.z-transform.localScale.z/2,transform.position.z+transform.localScale.z/2));
+           Vector3 BallAverage = new Vector3(Mathf.Clamp(Average.x,transform.position.x-0.5f,transform.position.x+0.5f),
+        Mathf.Clamp(Average.y,transform.position.y-0.5f,transform.position.y+0.5f),
+        Mathf.Clamp(Average.z,transform.position.z-0.5f,transform.position.z+0.5f));
 
         Vector3 PaddleAverage = new Vector3(Mathf.Clamp(Average.x,Paddle.GetComponent<Transform>().transform.position.x-Paddle.GetComponent<Transform>().transform.localScale.x/2,Paddle.GetComponent<Transform>().transform.position.x+Paddle.GetComponent<Transform>().transform.localScale.x/2),
         Mathf.Clamp(Average.y,Paddle.GetComponent<Transform>().transform.position.y-Paddle.GetComponent<Transform>().transform.localScale.y/2,Paddle.GetComponent<Transform>().transform.position.y+Paddle.GetComponent<Transform>().transform.localScale.y/2),
         Mathf.Clamp(Average.z,Paddle.GetComponent<Transform>().transform.position.z-Paddle.GetComponent<Transform>().transform.localScale.z/2,Paddle.GetComponent<Transform>().transform.position.z+Paddle.GetComponent<Transform>().transform.localScale.z/2));
 
-        Debug.DrawLine(BallAverage,transform.position,Color.red,2,false);
-        Debug.DrawLine(PaddleAverage,Paddle.GetComponent<Transform>().transform.position,Color.red,2,false);
         return PaddleAverage==BallAverage;
     }
 

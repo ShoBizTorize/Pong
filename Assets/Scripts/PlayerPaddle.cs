@@ -27,7 +27,7 @@ public class Player1Paddle : MonoBehaviour
 
 
     float dt = Time.deltaTime;
-    float speed = 23.0f;
+    float speed = 2.0f;
 
     if ((Input.GetKey(KeyCode.W)&&!Player2)||(Input.GetKey(KeyCode.UpArrow)&&Player2))
     transform.position += Vector3.up * speed * Time.deltaTime;
